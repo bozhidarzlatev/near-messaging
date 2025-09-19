@@ -3,11 +3,12 @@ import path from 'path';
 import authRoutes from "./routes/auth.route.js"
 import { connectDB } from './lib/db.js';
 import { ENV } from './lib/env.js';
-
+import cookieParser from "cookie-parser"
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 const __dirname = path.resolve()
 
@@ -24,6 +25,6 @@ if(ENV.NODE_ENV === "production") {
     })
 }
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}!`);
+    console.log(`Server is running on http://localhost:${PORT}!`);
     connectDB();
 });
