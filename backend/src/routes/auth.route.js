@@ -5,12 +5,8 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 
-router.get("/login", (req,res) => {
-    res.send("Login endpoint");
-});
+router.post("/login",authController.login);
 
-router.get("/logout", (req,res) => {
-    res.send("logout endpoint");
-});
+router.post("/logout", authController.logout);
 
 export default router;
