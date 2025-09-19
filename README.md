@@ -8,3 +8,4 @@ Stack:
 - sevalla for code deployment
 - MongoDB for data storage
 - Cloudinary to stora files 
+- Arcjet for rate limiting
