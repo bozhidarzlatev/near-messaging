@@ -9,3 +9,6 @@ Stack:
 - MongoDB for data storage
 - Cloudinary to stora files 
 - Arcjet for rate limiting
+- Tailwind and daisyUi for layouts
+- Axios for fetch requests
+- Zustand for state managment
