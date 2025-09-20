@@ -8,9 +8,6 @@ import bcrypt from "bcryptjs"
 const signup = async (req, res) => {
     const { fullName, email, password } = req.body;
 
-    console.log({ fullName, email, password });
-
-
     try {
         if (!fullName || !email || !password) {
             return res.status(400).json({ message: "All fields are required!" });
