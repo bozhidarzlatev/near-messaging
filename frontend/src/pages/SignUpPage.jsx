@@ -13,7 +13,6 @@ export default function SignUpPage() {
     const handleSumbit = async (e) => {
         e.preventDefault();
         signup(formData);
-        navigate("/");
     }
     return (
         <div className="w-full flex items-center justify-center p-4 bg-slate-900">

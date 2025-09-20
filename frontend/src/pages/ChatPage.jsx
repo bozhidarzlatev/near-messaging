@@ -1,5 +1,9 @@
-export default function ChatPage(){
+import { useAuthStore } from "../store/useAuthStore"
+
+export default function ChatPage() {
+    const { logout } = useAuthStore();
+
     return (
-       <div>ChatPage</div>
+            <button onClick={ logout} className="z-10">logout</button>
     )
 }
