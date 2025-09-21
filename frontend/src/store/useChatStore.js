@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
+import toast from "react-hot-toast";
 
 export const useChatStore = create((set, get) => ({
     allContacts: [],
@@ -19,25 +20,22 @@ export const useChatStore = create((set, get) => ({
     setActiveTab: (tab) => set({ activeTab: tab }),
     setSelectedUser: (user) => set({ selectedUser: user }),
 
-    getAllContact: async () => {
-        set({ isUsersLoading: true });
-
-        try {
-            const res = await addEventListener.get("/messages/contacts");
-            set({ allContacts: res.data })
-        } catch (error) {
-            toast.error(error.response.data.message);
-        } finally {
-            set({ isUsersLoading: false });
-        }
-    },
-
+    getAllContacts: async () => {
+    set({ isUsersLoading: true });
+    try {
+      const res = await axiosInstance.get("/messages/contacts");
+      set({ allContacts: res.data });
+    } catch (error) {
+      toast.error(error.response.data.message);
+    } finally {
+      set({ isUsersLoading: false });
+    }
+  },
     getMyChatPartners: async () => {
         set({ isUsersLoading: true });
-
         try {
-            const res = await addEventListener.get("/messages/chats");
-            set({ chats: res.data })
+            const res = await axiosInstance.get("/messages/chats");
+            set({ chats: res.data });
         } catch (error) {
             toast.error(error.response.data.message);
         } finally {
@@ -46,11 +44,11 @@ export const useChatStore = create((set, get) => ({
     },
 
     getMessagesByUserId: async (userId) => {
-        set({isMessagesLoading: true});
+        set({ isMessagesLoading: true });
 
         try {
-            const res =  await axiosInstance(`/messages/${userId}`);
-            set({message: res.data});
+            const res = await axiosInstance(`/messages/${userId}`);
+            set({ message: res.data });
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong!")
         }
