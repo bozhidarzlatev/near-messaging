@@ -5,7 +5,7 @@ Messaging app with real time conversation functionalities.
 
 Stack:
 - express.js for backend
-- sevalla for code deployment
+- sevalla for code deployment - // TODO:
 - MongoDB for data storage
 - Cloudinary to stora files 
 - Arcjet for rate limiting
