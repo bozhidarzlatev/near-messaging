@@ -14,7 +14,11 @@ function ProfileHeader() {
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
-        if (!file) return;
+               if (!file) {
+            toast.error("Please select an image file!")
+            return
+
+        }
 
         const reader = new FileReader();
         reader.readAsDataURL(file);

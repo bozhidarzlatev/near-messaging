@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore"
 import ChatHeader from "./ChatHeader";
@@ -7,18 +7,22 @@ import MessageInput from "./MessageInput";
 import MessagesLoadingSkeleton from "./MessagesLoadingSkeleton";
 
 export default function ChatContainer() {
-    const { selectedUser, getMessagesByUserId, messages, isMessagesLoading } = useChatStore();
-    const { authUser } = useAuthStore()
+  const { selectedUser, getMessagesByUserId, messages, isMessagesLoading } = useChatStore();
+  const { authUser } = useAuthStore()
+  const messageEndRef =useRef(null)
 
-    useEffect(() => {
-        getMessagesByUserId(selectedUser._id)
-        console.log(messages);
-        
-    }, [selectedUser, getMessagesByUserId])
+  useEffect(() => {
+    getMessagesByUserId(selectedUser._id)
 
-    console.log(authUser._id);
-    
-return (
+  }, [selectedUser, getMessagesByUserId])
+
+  useEffect(() => {
+    if(messageEndRef.current ) {
+      messageEndRef.current.scrollIntoView({behavior: "smooth"})
+    }
+  }, [messages])
+
+  return (
     <>
       <ChatHeader />
       <div className="flex-1 px-6 overflow-y-auto py-8">
@@ -30,11 +34,10 @@ return (
                 className={`chat ${msg.senderId === authUser._id ? "chat-end" : "chat-start"}`}
               >
                 <div
-                  className={`chat-bubble relative ${
-                    msg.senderId === authUser._id
+                  className={`chat-bubble relative ${msg.isOptimistic ? "bg-gray-500" : ""} ${msg.senderId === authUser._id
                       ? "bg-cyan-600 text-white"
                       : "bg-slate-800 text-slate-200"
-                  }`}
+                    }`}
                 >
                   {msg.image && (
                     <img src={msg.image} alt="Shared" className="rounded-lg h-48 object-cover" />
@@ -51,8 +54,8 @@ return (
             ))}
             {/* 👇 scroll target */}
             <div
-            //  ref={messageEndRef}
-             />
+              ref={messageEndRef}
+            />
           </div>
         ) : isMessagesLoading ? (
           <MessagesLoadingSkeleton />
