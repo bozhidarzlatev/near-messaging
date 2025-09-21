@@ -6,7 +6,7 @@ import ContactList from "../components/ContactList";
 import ProfileHeader from "../components/ProfileHeader";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
-import ChatComponent from "../components/ChatComponent";
+import ChatContainer from "../components/ChatContainer";
 import NoConversationPlaceholder from "../components/NoConversationPlaceholder";
 
 export default function ChatPage() {
@@ -30,7 +30,7 @@ export default function ChatPage() {
                     </div>
                 </div>
                 <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm">
-                    {selectedUser ? <ChatComponent /> : <NoConversationPlaceholder />}
+                    {selectedUser ? <ChatContainer /> : <NoConversationPlaceholder />}
 
                 </div>
 
