@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { ImageIcon, SendIcon, XIcon } from "lucide-react";
 
 export default function MessageInput() {
-    const { playRandomKeyStokeSound } = useKeyboardSound();
+    const { playRandomKeyStrokeSound } = useKeyboardSound();
     const [text, setText] = useState("");
     const [imagePreview, setImaegePreview] = useState(null);
     const { isSoundEnabled, sendMessage } = useChatStore();
@@ -14,7 +14,7 @@ export default function MessageInput() {
     const handleSendMessage = (e) => {
         e.preventDefault();
         if (!text.trim() && !imagePreview) return;
-        if (isSoundEnabled) playRandomKeyStokeSound()
+        if (isSoundEnabled) playRandomKeyStrokeSound()
 
         sendMessage({
             text: text.trim(),

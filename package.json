@@ -1,7 +1,6 @@
 {
-  "name": "near-messaging",
+  "name": "chatify-app",
   "version": "1.0.0",
-  "description": "Messaging app with real time conversation functionalities.",
   "main": "index.js",
   "engines": {
     "node": ">=20.0.0"
@@ -12,5 +11,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }

@@ -12,3 +12,4 @@ Stack:
 - Tailwind and daisyUi for layouts
 - Axios for fetch requests
 - Zustand for state managment
+- Socket.io for real time messaging
