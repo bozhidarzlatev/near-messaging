@@ -5,13 +5,16 @@ import { useAuthStore } from "../store/useAuthStore";
 import UsersLoadingSkeleton from "./UsersLoadingSceleton";
 
 function ChatsList() {
-  const { getMyChatPartners, chats, isUsersLoading, setSelectedUser } = useChatStore();
+  const { getMyChatPartners, chats, isUsersLoading, messages, selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
 
   useEffect(() => {
     getMyChatPartners();
   }, [getMyChatPartners]);
 
+  console.log(selectedUser);
+  console.log(messages);
+  
   if (isUsersLoading) return <UsersLoadingSkeleton />;
   if (chats.length === 0) return <NoChatsFound />;
 
